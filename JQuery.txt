@@ -1,0 +1,169 @@
+Jquery:
+- Jquery is a library built in Javascript language and help to use javascript language.Written on top of javascript.
+- Empasizes interaction between javascript and html
+- fast, lightweight, feature-rich, client-side Javascript framework/Library
+- Help to traverse in DOM, make animations, make ajax interaction, manupulate page content, change / apply styles, change page conntents dynamically
+
+Why Jquery :
+- Easy to learn & use
+- fast and light weight
+- Cross platform support
+- Easy to traverse in DOM
+- Large pool of built in methods
+- methods for creating animations, changing styles
+- Event detection  & handling
+
+Statring point
+$(document).ready() function which is executed when DOM is loaded.
+there can be any number of $(document).ready() functions on same page. $ is alias 
+We can use specific character in place of $ using jQuery.noConflict()
+Other client side libs lik MooTools, Prototype can be used with jQuery and they use $  as global function or to define variable. This situation creates confilct as both uses $.To overcome this jQuery introduced jQuery.noConflict();
+
+jQuery.noConflict(); 
+ Use jQuery via jQuery(...) 
+ jQuery(document).ready(function(){ 
+ jQuery("div").hide(); 
+}); 
+
+You can also use your own specific character in the place of $ sign in jQuery.
+
+var $j = jQuery.noConflict(); 
+Use jQuery via jQuery(...) 
+(document).ready(function(){ 
+$j("div").hide(); 
+});   
+
+Diff between body onload() and document.ready()
+- there can be multiple ready() in one page where as only one onload()
+- ready() is get called as soon as DOM loaded where as onload() is executed when all page content get loaded
+
+Two versions of jQuery
+1. Production - .js file, not compressed so can be modify
+2. Deployment /minified version - min.js file, compressed version so cannot modify, less size than prod version
+
+CDN: 
+A content delivery network or content distribution network (CDN) is a large distributed system of servers deployed in multiple data centers across the Internet. The goal of a CDN is to serve content to end-users with high availability and high performance.
+There are 3 popular jQuery CDNs.
+1. Google.
+2. Microsoft
+3. jQuery.
+Advantage of using CDN.
+•It reduces the load from your server.
+•It saves bandwidth. jQuery framework will load faster from these CDN.
+•The most important benefit is it will be cached, if the user has visited any site which is using jQuery framework from any of these CDN
+
+code to load jQuery from all 3 CDNs.
+- Code to load jQuery Framework from Google CDN
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> 
+</script> 
+- Code to load jQuery Framework from Microsoft CDN
+<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.9.1.min.js"> 
+</script> 
+- Code to load jQuery Framework from jQuery Site(EdgeCast CDN)
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"> 
+</script> 
+
+----
+How to load jQuery locally when CDN fails?
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>  
+<script type="text/javascript"> 
+if (typeof jQuery == 'undefined') 
+{ 
+  document.write(unescape("%3Cscript src='Scripts/jquery.1.9.1.min.js' type='text/javascript'%3E%3C/script%3E")); 
+} 
+</script> 
+-----
+Selectors in jQuery:
+- to find element in DOM selector is used. There are many types of selectors
+- Name: Selects all elements which matches with given element name
+- #ID: Selects single element which matches provided id. eg $('#txtName')
+- .Class: selects all elements which matches provided class
+- Universal(*) : selects all elements in dom
+- Multiple Elements E, F, G: Selects the combined results of all the specified selectors E, F or G.
+- Attribute Selector: Select elements based on its attribute value.
+
+Q. $("div") will select?This will select all the div elements on page.
+Q. How to select element having a particular class (".selected")?Ans: $('.selected'). This selector is known as class selector. We need to prefix the class name with "." (dot).
+Q. What does $("div.parent") will select? Ans: All the div element with parent class.
+Q. fastest selectors in jQuery? Ans: ID and element selectors are the fastest selectors in jQuery.
+Q. slow selectors in jQuery? Ans: class selectors are the slow compare to ID and element.
+
+Q. How jQuery selectors are executed? Ans: Your last selectors is always executed first. For example, in below jQuery code, jQuery will first find all the elements with class ".myCssClass" and after that it will reject all the other elements which are not in "p#elmID".
+$("p#elmID .myCssClass"); 
+
+----------------------------------------------------------------------------------------------------
+Q31. How do you check if an element is empty?
+Ans: There are 2 ways to check if element is empty or not. We can check using ":empty" selector.
+$(document).ready(function(){ 
+
+    if ($('#element').is(':empty')){ //Element is empty } }); 
+
+And the second way is using the "$.trim()" method.
+
+$(document).ready(function(){ if($.trim($('#element').html())=='') { //Element is empty } }); 
+-----------------------------------------------------------------------------------------------------
+Q32. How do you check if an element exists or not in jQuery?
+Ans: Using jQuery length property, we can ensure whether element exists or not.
+
+$(document).ready(function(){ if ($('#element').length > 0){ //Element exists }); }); 
+-----------------------------------------------------------------------------------------------------
+Q33. What is the use of jquery .each() function?
+Ans: The $.each() function is used to iterate over a jQuery object. The $.each() function can be used to iterate over any collection, whether it is an object or an array.
+-----------------------------------------------------------------------------------------------------
+Q34. What is the difference between jquery.size() and jquery.length?
+Ans: jQuery .size() method returns number of element in the object. But it is not preferred to use the size() method as jQuery provide .length property and which does the same thing. But the .length property is preferred because it does not have the overhead of a function call. 
+-----------------------------------------------------------------------------------------------------
+Q35. What is the difference between $('div') and $('<div/>') in jQuery?
+Ans: $('<div/>') : This creates a new div element. However this is not added to DOM tree unless you don't append it to any DOM element.
+ $('div') : This selects all the div element present on the page
+-----------------------------------------------------------------------------------------------------
+Q36. What is the difference between parent() and parents() methods in jQuery?
+Ans: The basic difference is the parent() function travels only one level in the DOM tree, where parents() function search through the whole DOM tree.
+-----------------------------------------------------------------------------------------------------
+Q38. How do you implement animation functionality?
+ Ans: The .animate() method allows us to create animation effects on any numeric CSS property. This method changes an element from one state to another with CSS styles. The CSS property value is changed gradually, to create an animated effect.
+
+ Syntax is:
+
+(selector).animate({styles},speed,easing,callback) 
+•styles: Specifies one or more CSS properties/values to animate.
+•duration: Optional. Specifies the speed of the animation.
+•easing: Optional. Specifies the speed of the element in different points of the animation. Default value is "swing".
+•callback: Optional. A function to be executed after the animation completes.
+Simple use of animate function is,
+$("btnClick").click(function(){ $("#dvBox").animate({height:"100px"}); });
+----------------------
+Q39. How to disable jQuery animation?
+ Ans: Using jQuery property "jQuery.fx.off", which when set to true, disables all the jQuery animation. When this is done, all animation methods will immediately set elements to their final state when called, rather than displaying an effect.
+-------------------------------
+Q41. What is the difference between .empty(), .remove() and .detach() methods in jQuery?
+ Ans: All these methods .empty(), .remove() and .detach() are used for removing elements from DOM but they all are different.
+
+.empty(): This method removes all the child element of the matched element where remove() method removes set of matched elements from DOM.
+
+.remove(): Use .remove() when you want to remove the element itself, as well as everything inside it. In addition to the elements themselves, all bound events and jQuery data associated with the elements are removed. 
+
+.detach(): This method is the same as .remove(), except that .detach() keeps all jQuery data associated with the removed elements. This method is useful when removed elements are to be reinserted into the DOM at a later time. 
+--------------------------------------------------------------
+Q42. Explain .bind() vs .live() vs .delegate() vs .on()
+ Ans: All these 4 jQuery methods are used for attaching events to selectors or elements. But they all are different from each other.
+
+.bind(): This is the easiest and quick method to bind events. But the issue with bind() is that it doesn't work for elements added dynamically that matches the same selector. bind() only attach events to the current elements not future element. Above that it also has performance issues when dealing with a large selection.
+
+.live(): This method overcomes the disadvantage of bind(). It works for dynamically added elements or future elements. Because of its poor performance on large pages, this method is deprecated as of jQuery 1.7 and you should stop using it. Chaining is not properly supported using this method.
+
+.delegate(): The .delegate() method behaves in a similar fashion to the .live() method, but instead of attaching the selector/event information to the document, you can choose where it is anchored and it also supports chaining.
+
+.on(): Since live was deprecated with 1.7, so new method was introduced named ".on()". This method provides all the goodness of previous 3 methods and it brings uniformity for attaching event handlers.
+----------------------------------------------------------------------
+Q43. What is wrong with this code line "$('#myid.3').text('blah blah!!!');"
+ Ans: The problem with above statement is that the selectors is having meta characters and to use any of the meta-characters ( such as !"#$%&'()*+,./:;<=>?@[\]^`{|}~ ) as a literal part of a name, it must be escaped with with two backslashes: \\. For example, an element with id="foo.bar", can use the selector $("#foo\\.bar"). 
+ So the correct syntax is,
+ 
+$('#myid\\.3').text('blah blah!!!'); 
+----------------------------------------------------------------------
+
+
+
+ 
